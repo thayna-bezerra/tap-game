@@ -5,8 +5,8 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     //velocidade dos objetos
-    private float minSpeed = 12f;
-    private float maxSpeed = 16f;
+    private float minSpeed = 14f;
+    private float maxSpeed = 19f;
     private float maxTorque = 10f; //rotação dos objetos
 
     //local que o objeto será spawnado
@@ -42,5 +42,10 @@ public class Target : MonoBehaviour
     private Vector3 RandomSpawnPos()
     {
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
+    }
+
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
     }
 }
