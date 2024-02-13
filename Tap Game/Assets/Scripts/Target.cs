@@ -47,5 +47,14 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+
+        //incrementa a pontuação
+        if (this.tag == "GoodTarget")
+        {
+            GameManager.score += 10;
+            //incrementa tempo de jogo
+        }
+
+        //decrementa o tempo de jogo
     }
 }
