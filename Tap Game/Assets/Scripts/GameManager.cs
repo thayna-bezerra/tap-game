@@ -7,7 +7,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //propriedades/dados da classe
-    public static int score = 0;
+    public static int score = 0; //score do jogo
+    public static float time = 0f; //vida do player
 
     //propriedades/dados do objeto
     [SerializeField, Tooltip("Define os itens do jogo")]
@@ -25,10 +26,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateHud();
+
+        //diminuir o tempo de jogo
+        time -= Time.deltaTime;
+        Debug.Log(time);
     }
 
     private void StartGame()
     {
+        //tempo que o player poderá jogar
+        GameManager.time = 50;
         //inicia o spawn dos targets (itens)
         StartCoroutine(SpawnTargets());
         //zera o score
@@ -42,7 +49,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnTargets() 
     {
-        while (true)
+        //enquanto tiver tempo spawn targets
+        while (GameManager.time > 0)
         {
             yield return new WaitForSeconds(1f);
             int index = Random.Range(0, targets.Count);

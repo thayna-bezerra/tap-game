@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
         transform.position = RandomSpawnPos();
         rb.AddForce(RandomForce(), ForceMode.Impulse);
         rb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
+        Destroy(gameObject, 5f);
     }
 
     void Update()
@@ -49,12 +50,15 @@ public class Target : MonoBehaviour
         Destroy(gameObject);
 
         //incrementa a pontuação
-        if (this.tag == "GoodTarget")
+        if (this.tag == "GoodTarget" && GameManager.time > 0)
         {
             GameManager.score += 10;
-            //incrementa tempo de jogo
+            GameManager.time += 10;
         }
 
-        //decrementa o tempo de jogo
+        if (this.tag == "BadTarget" && GameManager.time > 0)
+        {
+            GameManager.time -= 10;
+        }
     }
 }
