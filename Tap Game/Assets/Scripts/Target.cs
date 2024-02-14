@@ -11,7 +11,7 @@ public class Target : MonoBehaviour
 
     //local que o objeto será spawnado
     private float xRange = 5f;
-    private float ySpawnPos = -6f;
+    private float ySpawnPos = -4f;
 
     //corpo do objeto
     private Rigidbody rb;
