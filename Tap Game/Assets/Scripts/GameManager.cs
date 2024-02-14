@@ -8,7 +8,11 @@ public class GameManager : MonoBehaviour
 {
     //propriedades/dados da classe
     public static int score = 0; //score do jogo
+    public static string nickname = "";
+    public static int highScore = 1000; //score do jogo
+    public static string nicknameHighScore = "thrummer";
     public static float timer = 0f; //vida do player
+
 
     //propriedades/dados do objeto
     [SerializeField, Tooltip("Define os itens do jogo")]
