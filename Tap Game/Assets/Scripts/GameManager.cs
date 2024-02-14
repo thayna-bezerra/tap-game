@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +38,11 @@ public class GameManager : MonoBehaviour
 
         //diminuir o tempo de jogo
         timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            //GoGameOver();
+            Invoke("GoGameOver", 1);
+        }
     }
 
     private void StartGame()
@@ -90,5 +96,10 @@ public class GameManager : MonoBehaviour
             timeToSpawn -= 0.1f; //diminui o tempo de spawn
             qtdTargets += 1; //incrementa a quantidade de targets que serão criados
         }
+    }
+
+    private void GoGameOver()
+    {
+        SceneManager.LoadScene(2);
     }
 }
