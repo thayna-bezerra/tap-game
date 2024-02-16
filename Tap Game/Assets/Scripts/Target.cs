@@ -50,6 +50,8 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         audioSource.Play();
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
 
         //incrementa a pontuação
         if (this.tag == "GoodTarget" && GameManager.timer > 0)
@@ -63,6 +65,6 @@ public class Target : MonoBehaviour
             GameManager.timer -= 10;
         }
 
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 2f);
     }
 }
