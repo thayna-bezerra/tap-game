@@ -15,10 +15,12 @@ public class Target : MonoBehaviour
 
     //corpo do objeto
     private Rigidbody rb;
+    private AudioSource audioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         transform.position = RandomSpawnPos();
         rb.AddForce(RandomForce(), ForceMode.Impulse);
         rb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -47,7 +49,7 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Destroy(gameObject);
+        audioSource.Play();
 
         //incrementa a pontuação
         if (this.tag == "GoodTarget" && GameManager.timer > 0)
@@ -60,5 +62,7 @@ public class Target : MonoBehaviour
         {
             GameManager.timer -= 10;
         }
+
+        Destroy(gameObject, 2);
     }
 }
