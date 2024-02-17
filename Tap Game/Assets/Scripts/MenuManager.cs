@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    private TMP_InputField nick;
+
     public void StartGame()
     {
-        //tratar a parte de usuario
-        SceneManager.LoadScene(1);
+        nick = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
+        GameManager.GetPlayer(nick.text);
+        Debug.Log(GameManager.player.nick);
+        //SceneManager.LoadScene(1);
     }
 
     public void CreateUser()

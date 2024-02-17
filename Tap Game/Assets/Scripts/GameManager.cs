@@ -14,6 +14,35 @@ public class GameManager : MonoBehaviour
     public static string nicknameHighScore = "thrummer";
     public static float timer = 0f; //vida do player
 
+    //banco de dados na web
+    public static User player;
+    public static User playerHighScore;
+
+    //metodos da classe
+
+    //pega os dados do jogador
+    public static async void GetPlayer(string nick)
+    {
+        player = await ServiceAPI.GetUser(nick);
+    }
+
+    //pega os dados do jogador com a maior pontuacao
+    public static async void GetPlayerHighScore()
+    {
+        playerHighScore = await ServiceAPI.GetUser();
+        if(playerHighScore != null)
+        {
+            highScore = playerHighScore.score;
+            nicknameHighScore = playerHighScore.nick;
+        }
+    }
+
+    //grava os dados jogador no banco de dados
+    public static async void SetScore()
+    {
+        ServiceAPI.SetScore(nickname, score);
+    }
+
 
     //propriedades/dados do objeto
     [SerializeField, Tooltip("Define os itens do jogo")]
