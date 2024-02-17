@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
 
     public void CreateUser()
     {
-        //site do game
+        Application.OpenURL("http://tapgameapp.reactivit.com.br");
     }
 
     public void ExitGame()
