@@ -19,6 +19,7 @@ public class ServiceAPI
         return client;
     } 
 
+    //retorna um usuario com base no nickname
     public static async Task<User> GetUser(string nick)
     {
         HttpClient client = GetClient();
@@ -31,5 +32,27 @@ public class ServiceAPI
             return JsonConvert.DeserializeObject<User>(content);
         }
         return new User();
+    }
+
+    //retorna o usuario com a maior pontuação
+    public static async Task<User> GetUser()
+    {
+        HttpClient client = GetClient();
+        var responsive = await client.GetAsync(URL + "highscore");
+
+        //pegou os dados da api?
+        if (responsive.IsSuccessStatusCode == true)
+        {
+            string content = await responsive.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<User>(content);
+        }
+        return new User();
+    }
+
+    public static async void SetScore(string nick, int score)
+    {
+        HttpClient client = GetClient();  
+        HttpContent content = null;
+        await client.PutAsync(URL + "user/" + nick + "/score/" +score, content);
     }
 }
