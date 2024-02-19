@@ -11,9 +11,9 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         nick = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
-        GameManager.GetPlayer(nick.text);
-        Debug.Log(GameManager.player.nick);
-        //SceneManager.LoadScene(1);
+        GameManager.nickname = nick.text;
+        GameManager.GetPlayerHighScore();
+        SceneManager.LoadScene(1);
     }
 
     public void CreateUser()

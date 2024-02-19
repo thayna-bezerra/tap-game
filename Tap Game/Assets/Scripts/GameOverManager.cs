@@ -13,6 +13,11 @@ public class GameOverManager : MonoBehaviour
     {
         score.text = "MY SCORE: " + GameManager.score.ToString();
         highScore.text = "HIGH SCORE: " + GameManager.nicknameHighScore + " - " + GameManager.highScore.ToString();
+        GameManager.SetScore();
+
+        Debug.Log(score.text);
+        Debug.Log(highScore.text);
+
         Invoke("GoMenu", 7f);
     }
 

@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     //propriedades/dados da classe
     public static int score = 0; //score do jogo
     public static string nickname = "";
-    public static int highScore = 1000; //score do jogo
-    public static string nicknameHighScore = "thrummer";
+    public static int highScore = 0; //score do jogo
+    public static string nicknameHighScore = "Tap Game";
     public static float timer = 0f; //vida do player
 
     //banco de dados na web
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         //tempo que o player poderá jogar
-        GameManager.timer = 50;
+        GameManager.timer = 20;
         //qtd de targts
         qtdTargets = 1;
         //tempo de spawn

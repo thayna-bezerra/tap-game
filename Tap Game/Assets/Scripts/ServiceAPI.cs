@@ -53,6 +53,6 @@ public class ServiceAPI
     {
         HttpClient client = GetClient();  
         HttpContent content = null;
-        await client.PutAsync(URL + "user/" + nick + "/score/" +score, content);
+        await client.PutAsync(URL + "user/" + nick + "/score/" + score, content);
     }
 }
