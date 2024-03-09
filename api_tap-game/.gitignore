@@ -1,0 +1,22 @@
+# Arquivos de configuração específicos do sistema
+.DS_Store
+thumbs.db
+
+# Arquivos de log gerados automaticamente
+*.log
+*.tmp
+
+# Arquivos temporários
+tmp/
+cache/
+
+# Pastas que contêm bibliotecas de terceiros ou frameworks
+node_modules/
+bower_components/
+
+# Quaisquer outros arquivos que você não deseja que sejam rastreados pelo Git
+.idea/
+.vscode/
+
+# Comentário: Ignora todos os arquivos .bak
+*.bak
