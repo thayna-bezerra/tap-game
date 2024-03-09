@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/thayna-bezerra/tap-game/issues"
   },
-  "homepage": "https://github.com/thayna-bezerra/tap-game#readme"
+  "homepage": "https://github.com/thayna-bezerra/tap-game#readme",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
 }
