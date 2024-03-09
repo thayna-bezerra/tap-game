@@ -1,0 +1,19 @@
+{
+  "name": "api_tap-game",
+  "version": "1.0.0",
+  "description": "api controla o score do jogo tap game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thayna-bezerra/tap-game.git"
+  },
+  "author": "Thayna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thayna-bezerra/tap-game/issues"
+  },
+  "homepage": "https://github.com/thayna-bezerra/tap-game#readme"
+}
