@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static int score = 0; //score do jogo
     public static string nickname = "";
     public static int highScore = 0; //score do jogo
-    public static string nicknameHighScore = "Tap Game";
+    public static string nicknameHighScore = "";
     public static float timer = 0f; //vida do player
 
     //banco de dados na web
@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     public static async void GetPlayerHighScore()
     {
         playerHighScore = await ServiceAPI.GetUser();
-        if(playerHighScore != null)
+
+        if (playerHighScore != null)
         {
             highScore = playerHighScore.score;
             nicknameHighScore = playerHighScore.nick;

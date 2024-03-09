@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
         GameManager.nickname = nick.text;
         GameManager.GetPlayerHighScore();
         SceneManager.LoadScene(1);
+        Debug.Log(nick.text);
     }
 
     public void CreateUser()

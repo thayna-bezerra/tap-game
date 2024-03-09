@@ -12,8 +12,11 @@ public class GameOverManager : MonoBehaviour
     void Start()
     {
         score.text = "MY SCORE: " + GameManager.score.ToString();
+        //highScore.text = "HIGH SCORE: " + GameManager.nickname + " - " + GameManager.highScore.ToString();
         highScore.text = "HIGH SCORE: " + GameManager.nicknameHighScore + " - " + GameManager.highScore.ToString();
         GameManager.SetScore();
+
+        Debug.Log(GameManager.nickname);
 
         Debug.Log(score.text);
         Debug.Log(highScore.text);
