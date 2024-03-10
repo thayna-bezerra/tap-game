@@ -6,6 +6,7 @@ const router = express.Router();
     res.json({pong: true})
 })*/
 
-router.get('/ping', apicontroller.ping)
+router.get('/ping', apicontroller.ping);
+router.post('/signup', apicontroller.signup)
 
 module.exports = router;
