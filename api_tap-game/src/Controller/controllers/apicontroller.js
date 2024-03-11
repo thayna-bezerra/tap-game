@@ -142,5 +142,56 @@ module.exports = {
             msg: 'User alterated successful',
             error: ''
         })
+    },
+
+    score: async(req, res) => {
+        const nick = req.params.nick;
+        const newScore = req.params.score;
+        const user = await User.findOne({nick}).exec();
+        if(!user) {
+            res.json({
+                error: "Invalid user"
+            });
+            return;
+        } 
+
+        const id = user._id;
+        const scoreAtual = user.score;
+        if(newScore > scoreAtual) {
+            const userUpdate = await User.findByIdAndUpdate(id, {score: newScore});
+            if(!userUpdate) {
+                res.json({error: "Error Update"});
+            }
+
+            const geraRanking = await User.aggregate([
+                {
+                    $setWindowFields: {
+                        sortBy: {score: -1},
+                        output: {
+                            ranking: {
+                                $rank: {}
+                            },
+                        },
+                    },
+                },
+            ]).exec();
+            geraRanking.map((user) => {
+                User.updateOne({_id: user._id}, {ranking: user.ranking}).exec();
+            });
+            res.json({
+                data: [],
+                msg: "Score alterado com sucesso"
+            })
+        } else {
+            res.json({
+                data: [],
+                msg: "Noob"
+            });
+            return;
+        }
+    },
+
+    ranking: async(req, res) => {
+
     }
 }
