@@ -5,6 +5,7 @@ thumbs.db
 # Arquivos de log gerados automaticamente
 *.log
 *.tmp
+*.env
 .env
 
 # Arquivos temporários

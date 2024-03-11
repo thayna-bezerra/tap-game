@@ -17,7 +17,7 @@ module.exports = {
             timeGame
         } = req.body;
 
-        const userExist = await User.find({ email });
+        const userExist = await User.findOne({ email });
         if (userExist) {
             res.json({
                 data: [],
@@ -29,7 +29,7 @@ module.exports = {
         const passwordHash = await bcrypt.hash(password, 10);
         const newUser = new User({
             avatar,
-            name, 
+            name,
             nick,
             email,
             password,
