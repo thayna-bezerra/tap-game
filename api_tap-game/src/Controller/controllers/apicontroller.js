@@ -102,4 +102,36 @@ module.exports = {
             error: ''
         });
     },
+
+    update: async(req, res) => {
+        let {
+            avatar,
+            name,
+            nick,
+            email,
+        } = req.body;
+
+        const id = req.params.id;
+
+        const user = await User.findByIdAndUpdate(id, {
+            avatar,
+            name, 
+            nick,
+            email
+        }).exec();
+
+        if(!user) {
+            res.json({
+                data: [],
+                error: 'Invalid user'
+            });
+            return;
+        }
+
+        res.json({
+            data: [],
+            msg: 'User alterated successful',
+            error: ''
+        })
+    }
 }
