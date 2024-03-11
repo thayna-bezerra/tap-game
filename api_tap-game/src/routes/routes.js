@@ -9,5 +9,6 @@ const router = express.Router();
 router.get('/ping', apicontroller.ping);
 router.post('/signup', apicontroller.signup)
 router.post('/signin', apicontroller.signin)
+router.get('/info/:nick', apicontroller.info);
 
 module.exports = router;

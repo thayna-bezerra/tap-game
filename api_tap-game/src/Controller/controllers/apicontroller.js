@@ -82,5 +82,24 @@ module.exports = {
             msg: 'Login successful',
             error: ''
         })
-    }
+    },
+
+    info: async(req, res) => {
+        const nick = req.params.nick;
+        const userInfo = await User.findOne({nick})
+        .select({nick:1, avatar:1, ranking:1, score:1, _id:0})
+        .exec();
+        if(!userInfo){
+            res.json({
+                data: [],
+                error: 'User not founded'
+            });
+            return;
+        }
+        res.json({
+            data: userInfo,
+            msg: 'User founded successful',
+            error: ''
+        });
+    },
 }
