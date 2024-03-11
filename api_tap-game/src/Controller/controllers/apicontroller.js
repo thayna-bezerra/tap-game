@@ -1,5 +1,6 @@
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
+//const User = require('../models/User.js');
+const User = require('../../models/User')
+//const bcrypt = require('bcrypt');
 
 module.exports = {
     ping: async(req, res) => {
@@ -14,7 +15,7 @@ module.exports = {
             email,
             password,
             score,
-            hanking,
+            ranking,
             timeGame
         } = req.body;
 
@@ -27,7 +28,7 @@ module.exports = {
             return;
         }
 
-        const passwordHash = await bcrypt.hash(password, 10);
+        //const passwordHash = await bcrypt.hash(password, 10);
         const newUser = new User({
             avatar,
             name,
@@ -35,25 +36,33 @@ module.exports = {
             email,
             password,
             score,
-            hanking,
+            ranking,
             timeGame
         });
 
         const userSave = await newUser.save();
-        if(userSave) {
+        if (userSave) {
             res.json({
-                data: userSave,
-                msg: 'User successfull save',
+                data: {
+                    _id: userSave._id,
+                    avatar: userSave.avatar,
+                    name: userSave.name,
+                    nick: userSave.nick,
+                    email: userSave.email,
+                    score: userSave.score,
+                    ranking: userSave.ranking,
+                    timeGame: userSave.timeGame
+                },
+                msg: 'User successfully saved',
                 error: ''
             });
-            return;
         } else {
             res.json({
                 data: [],
-                error: 'Error save user'
+                error: 'Error saving user'
             });
-            return;
         }
+        
     },
     
     signin: async(req, res) => {
