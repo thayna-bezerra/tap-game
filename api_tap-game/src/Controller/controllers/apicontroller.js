@@ -218,5 +218,33 @@ module.exports = {
             data: rankingList,
             msg: 'Sucesso ao realizar consulta'
         })
+    },
+
+    highscore: async(req, res) => {
+        const user = await User.findOne({
+            ranking: {$gt: 0, $ne: 0},
+            score: {$gt: 0}
+        })
+        .sort({ranking: 1})
+        .limit(1)
+        .select({
+            nick: 1,
+            avatar: 1,
+            ranking: 1,
+            score: 1,
+            _id: 0
+        }).exec();
+
+        if(!user) {
+            res.json({
+                data:[],
+                msg: "Erro ao realizar consulta"
+            });
+            return;
+        }
+        res.json({
+            data: user,
+            msg: "Consulta realizada com sucesso"
+        });
     }
 }
