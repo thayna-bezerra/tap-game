@@ -105,10 +105,13 @@ module.exports = {
             });
             return;
         }
-        res.json({
+        /*res.json({
             data: userInfo,
             msg: 'User founded successful',
             error: ''
+        });*/
+        res.json({
+            userInfo
         });
     },
 
@@ -242,9 +245,13 @@ module.exports = {
             });
             return;
         }
-        res.json({
+        /*res.json({
             data: user,
             msg: "Consulta realizada com sucesso"
+        });*/
+
+        res.json({ //a unity procura diretamente no json, e não no atributo data
+            user
         });
     }
 }
