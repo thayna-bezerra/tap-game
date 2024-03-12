@@ -194,7 +194,7 @@ module.exports = {
     ranking: async(req, res) => {
         const qtd = req.params.qtd;
         const rankingList = await User.find({
-            ranking: {$qt: 0, $ne: 0},
+            ranking: {$gt: 0, $ne: 0},
             score: {$ne:0}
         })
         .sort({ranking: 1})
@@ -207,7 +207,7 @@ module.exports = {
             _id: 0
         }).exec();
 
-        if(!rankningList) {
+        if(!rankingList) {
             res.json ({
                 data: [],
                 error: "erro ao realizar a consulta"
