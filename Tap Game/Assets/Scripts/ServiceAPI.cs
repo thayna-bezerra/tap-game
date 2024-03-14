@@ -7,7 +7,7 @@ using UnityEngine;
 public class ServiceAPI
 {
     //endereco da api
-    const string URL = "http://tapgameapp.reactivit.com.br/api/";
+    const string URL = "https://tap-game.onrender.com";
 
     //objeto para interagir com a api
     public static HttpClient GetClient()
